@@ -13,14 +13,16 @@ if (characterId) {
       const actor = character.actor || "non renseigné";
       const house = character.house || "";
       const image = character.image || defaultImage;
-      const dateOfBirth = character.dateOfBirth || "non renseigné";
-      const ancestry = character.ancestry || "non renseigné";
+      const gender = character.gender || "non renseigné";
       const eyeColour = character.eyeColour || "non renseigné";
+      const hairColour = character.hairColour || "non renseigné";
+      const dateOfBirth = character.dateOfBirth || "non renseigné";
       const patronus = character.patronus || "non renseigné";
+      const isAlive = character.alive;
 
-      let wandText = "non renseigné";
-      if (character.wand && (character.wand.wood || character.wand.core)) {
-        wandText = `${character.wand.wood || ""} ${character.wand.core || ""}`.trim();
+      let alternateNamesText = "non renseigné";
+      if (character.alternate_names && character.alternate_names.length > 0) {
+        alternateNamesText = character.alternate_names.join(", ");
       }
 
       const titleElement = document.querySelector("main h3");
@@ -32,6 +34,9 @@ if (characterId) {
       if (imgElement) {
         imgElement.src = image;
         imgElement.alt = name;
+        if (!isAlive) {
+          imgElement.style.filter = "grayscale(100%)";
+        }
       }
 
       const figcaptionElement = document.querySelector(".perso__left figcaption");
@@ -43,28 +48,28 @@ if (characterId) {
       if (infoContainer) {
         infoContainer.innerHTML = `
           <div>
-            <p class="attr">House :</p>
-            <p>${house || "non renseignée"}</p>
+            <p class="attr">Gender :</p>
+            <p>${gender}</p>
           </div>
           <div>
-            <p class="attr">Date of birth :</p>
-            <p>${dateOfBirth}</p>
-          </div>
-          <div>
-            <p class="attr">Ancestry :</p>
-            <p>${ancestry}</p>
-          </div>
-          <div>
-            <p class="attr">Eye colour :</p>
+            <p class="attr">Eye :</p>
             <p>${eyeColour}</p>
           </div>
           <div>
-            <p class="attr">Wand :</p>
-            <p>${wandText}</p>
+            <p class="attr">Hair :</p>
+            <p>${hairColour}</p>
+          </div>
+          <div>
+            <p class="attr">Date of Birth :</p>
+            <p>${dateOfBirth}</p>
           </div>
           <div>
             <p class="attr">Patronus :</p>
             <p>${patronus}</p>
+          </div>
+          <div>
+            <p class="attr">Nicknames :</p>
+            <p>${alternateNamesText}</p>
           </div>
         `;
       }
