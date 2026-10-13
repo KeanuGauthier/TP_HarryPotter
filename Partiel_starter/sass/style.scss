@@ -185,11 +185,15 @@ footer {
       width: 100%;
       & > div {
         display: flex;
-        justify-content: space-around;
-      }
 
-      p.attr {
-        font-weight: bold;
+        p:first-child {
+          width: 200px;
+          font-weight: normal;
+        }
+
+        p:last-child {
+          font-weight: bold;
+        }
       }
     }
   }

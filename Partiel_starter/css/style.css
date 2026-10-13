@@ -174,9 +174,12 @@ footer p {
 }
 .page_perso .perso__right > div {
   display: flex;
-  justify-content: space-around;
 }
-.page_perso .perso__right p.attr {
+.page_perso .perso__right > div p:first-child {
+  width: 200px;
+  font-weight: normal;
+}
+.page_perso .perso__right > div p:last-child {
   font-weight: bold;
 }
 .page_perso figure {
@@ -195,6 +198,7 @@ footer p {
   font-size: 20px;
 }
 .page_perso .house__perso {
+  padding: 20px 0;
   display: flex;
   justify-content: center;
   align-items: center;
