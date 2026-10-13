@@ -2,8 +2,10 @@ fetch("https://hp-api.onrender.com/api/characters")
   .then((response) => response.json())
   .then((data) => {
     const charactersContainer = document.querySelector(".characters");
+    if (!charactersContainer) return;
+
     const defaultImage = "./images/troll.jpg";
-    const first20Characters = data.slice(0, 20);
+    const allCharacters = data;
 
     function displayCharacters(list) {
       charactersContainer.innerHTML = "";
@@ -12,23 +14,20 @@ fetch("https://hp-api.onrender.com/api/characters")
         const name = character.name || "non renseigné";
         const house = character.house || "non renseignée";
         const image = character.image || defaultImage;
-
-        const isHarry = character.name === "Harry Potter";
-        const imageTag = `<img src="${image}" alt="${name}" />`;
-        const imageContent = isHarry
-          ? `<a href="details.html">${imageTag}</a>`
-          : imageTag;
+        const id = character.id;
 
         charactersContainer.innerHTML += `
           <div class="${house}">
-            ${imageContent}
+            <a href="details.html?id=${id}">
+              <img src="${image}" alt="${name}" />
+            </a>
             <p>${name}</p>
           </div>
         `;
       });
     }
 
-    displayCharacters(first20Characters);
+    displayCharacters(allCharacters);
 
     const houseImages = document.querySelectorAll(".houses img");
 
@@ -36,7 +35,7 @@ fetch("https://hp-api.onrender.com/api/characters")
       img.addEventListener("click", () => {
         const houseName = img.alt;
 
-        const filteredCharacters = first20Characters.filter(
+        const filteredCharacters = allCharacters.filter(
           (character) => character.house === houseName
         );
 
