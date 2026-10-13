@@ -204,21 +204,59 @@ footer p {
   align-items: center;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 768px) {
   header {
-    width: 90%;
+    width: 100%;
+    margin-top: 0;
+    padding: 15px 20px;
+    background-color: var(--light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
   }
-  header h1,
-  header ul {
+  header h1 {
     display: none !important;
   }
+  header__right img {
+    height: 60px;
+    margin-right: 0;
+  }
   header .header__left {
+    width: auto;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
   }
   header .header__left img {
     display: block !important;
-    height: 70px;
+    height: 35px;
+    cursor: pointer;
+  }
+  header ul {
+    display: none !important;
+  }
+  header ul.open {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    box-sizing: border-box;
+  }
+  header ul.open li {
+    padding: 12px 0;
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: var(--darkGrey);
   }
   main {
     width: 90%;

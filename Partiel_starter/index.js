@@ -49,3 +49,12 @@ fetch("https://hp-api.onrender.com/api/characters")
   .catch((error) => {
     console.error("Erreur lors de la récupération des personnages :", error);
   });
+
+const menuButton = document.querySelector(".header__left img");
+const menuList = document.querySelector(".header__left ul");
+
+if (menuButton && menuList) {
+  menuButton.addEventListener("click", () => {
+    menuList.classList.toggle("open");
+  });
+}
