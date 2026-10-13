@@ -76,6 +76,20 @@ fetch("https://hp-api.onrender.com/api/characters")
         displayCharacters(currentCharacters);
       });
     }
+
+    const searchInput = document.querySelector("#search-input");
+
+    if (searchInput) {
+      searchInput.addEventListener("input", () => {
+        const searchText = searchInput.value.toLowerCase();
+
+        const filteredByName = currentCharacters.filter((character) =>
+          character.name.toLowerCase().includes(searchText)
+        );
+
+        displayCharacters(filteredByName);
+      });
+    }
   })
   .catch((error) => {
     console.error("Erreur lors de la récupération des personnages :", error);

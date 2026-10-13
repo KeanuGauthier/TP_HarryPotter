@@ -127,6 +127,10 @@ footer p {
   text-align: center;
   padding: 15px 0;
 }
+.filters input {
+  margin: 5px;
+  padding: 5px 10px;
+}
 .filters button {
   margin: 5px;
   padding: 5px 10px;
