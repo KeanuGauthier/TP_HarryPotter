@@ -123,6 +123,16 @@ footer p {
   height: 136px;
 }
 
+.filters {
+  text-align: center;
+  padding: 15px 0;
+}
+.filters button {
+  margin: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
 .characters {
   display: flex;
   justify-content: space-around;

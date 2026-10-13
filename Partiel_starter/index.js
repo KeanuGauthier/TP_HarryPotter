@@ -6,6 +6,7 @@ fetch("https://hp-api.onrender.com/api/characters")
 
     const defaultImage = "./images/troll.jpg";
     const allCharacters = data;
+    let currentCharacters = [...allCharacters];
 
     function displayCharacters(list) {
       charactersContainer.innerHTML = "";
@@ -27,7 +28,7 @@ fetch("https://hp-api.onrender.com/api/characters")
       });
     }
 
-    displayCharacters(allCharacters);
+    displayCharacters(currentCharacters);
 
     const houseImages = document.querySelectorAll(".houses img");
 
@@ -35,15 +36,46 @@ fetch("https://hp-api.onrender.com/api/characters")
       img.addEventListener("click", () => {
         const houseName = img.alt;
 
-        const filteredCharacters = allCharacters.filter(
+        currentCharacters = allCharacters.filter(
           (character) => character.house === houseName
         );
 
-        filteredCharacters.sort((a, b) => a.name.localeCompare(b.name));
+        currentCharacters.sort((a, b) => a.name.localeCompare(b.name));
 
-        displayCharacters(filteredCharacters);
+        displayCharacters(currentCharacters);
       });
     });
+
+    const sortNameBtn = document.querySelector("#sort-name");
+    const sortAgeBtn = document.querySelector("#sort-age");
+    const sortAliveBtn = document.querySelector("#sort-alive");
+
+    if (sortNameBtn) {
+      sortNameBtn.addEventListener("click", () => {
+        currentCharacters.sort((a, b) => a.name.localeCompare(b.name));
+        displayCharacters(currentCharacters);
+      });
+    }
+
+    if (sortAgeBtn) {
+      sortAgeBtn.addEventListener("click", () => {
+        currentCharacters.sort((a, b) => {
+          const ageA = a.yearOfBirth ? 2026 - a.yearOfBirth : 0;
+          const ageB = b.yearOfBirth ? 2026 - b.yearOfBirth : 0;
+          return ageB - ageA;
+        });
+        displayCharacters(currentCharacters);
+      });
+    }
+
+    if (sortAliveBtn) {
+      sortAliveBtn.addEventListener("click", () => {
+        currentCharacters.sort((a, b) => {
+          return (b.alive === true ? 1 : 0) - (a.alive === true ? 1 : 0);
+        });
+        displayCharacters(currentCharacters);
+      });
+    }
   })
   .catch((error) => {
     console.error("Erreur lors de la récupération des personnages :", error);
