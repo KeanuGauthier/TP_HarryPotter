@@ -240,8 +240,54 @@ footer {
     }
   }
 
+  main {
+    width: 90%;
+  }
+
   .houses {
     flex-direction: column;
     align-content: space-around;
+  }
+
+  /* Adaptation complète de la page détails sur mobile */
+  .page_perso {
+    h3 {
+      padding: 20px 10px 0 10px;
+      font-size: 24px;
+    }
+
+    .perso {
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+
+      figure {
+        width: 100%;
+        max-width: 200px;
+        margin-right: 0;
+        margin-bottom: 25px;
+      }
+
+      &__right {
+        gap: 15px;
+
+        & > div {
+          justify-content: space-between;
+
+          p:first-child {
+            width: auto;
+          }
+        }
+      }
+    }
+
+    .house__perso {
+      padding: 20px 0;
+
+      img {
+        max-width: 150px;
+        height: auto;
+      }
+    }
   }
 }

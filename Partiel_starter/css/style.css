@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --light: #fff6e6;
   --darkGrey: #3a3a3a;
@@ -198,7 +199,6 @@ footer p {
   font-size: 20px;
 }
 .page_perso .house__perso {
-  padding: 20px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -220,9 +220,44 @@ footer p {
     display: block !important;
     height: 70px;
   }
+  main {
+    width: 90%;
+  }
   .houses {
     flex-direction: column;
     align-content: space-around;
+  }
+  /* Adaptation complète de la page détails sur mobile */
+  .page_perso h3 {
+    padding: 20px 10px 0 10px;
+    font-size: 24px;
+  }
+  .page_perso .perso {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  .page_perso .perso figure {
+    width: 100%;
+    max-width: 200px;
+    margin-right: 0;
+    margin-bottom: 25px;
+  }
+  .page_perso .perso__right {
+    gap: 15px;
+  }
+  .page_perso .perso__right > div {
+    justify-content: space-between;
+  }
+  .page_perso .perso__right > div p:first-child {
+    width: auto;
+  }
+  .page_perso .house__perso {
+    padding: 20px 0;
+  }
+  .page_perso .house__perso img {
+    max-width: 150px;
+    height: auto;
   }
 }
 
