@@ -136,6 +136,22 @@ footer {
   padding: 30px;
   & > div {
     padding: 30px;
+
+    &.Gryffindor:hover img {
+      border-color: var(--red);
+    }
+
+    &.Slytherin:hover img {
+      border-color: var(--green);
+    }
+
+    &.Hufflepuff:hover img {
+      border-color: var(--yellow);
+    }
+
+    &.Ravenclaw:hover img {
+      border-color: var(--blue);
+    }
   }
   img {
     width: 150px;
